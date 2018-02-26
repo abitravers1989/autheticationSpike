@@ -12,7 +12,10 @@ namespace AuthenticatorPractice
         Console.WriteLine(auth);
 
          var encodedString = aOuth.EncodingwithBase(auth);
-            Console.WriteLine(encodedString);
+         Console.WriteLine(encodedString);
+
+         var hmac = aOuth.CreateToken(auth, "secreteKey");
+          Console.WriteLine(hmac);
        Console.ReadKey();
         }
     }
