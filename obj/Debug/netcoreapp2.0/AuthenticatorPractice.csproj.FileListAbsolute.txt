@@ -1,0 +1,11 @@
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\obj\Debug\netcoreapp2.0\AuthenticatorPractice.csprojResolveAssemblyReference.cache
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\obj\Debug\netcoreapp2.0\AuthenticatorPractice.csproj.CoreCompileInputs.cache
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\obj\Debug\netcoreapp2.0\AuthenticatorPractice.AssemblyInfoInputs.cache
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\obj\Debug\netcoreapp2.0\AuthenticatorPractice.AssemblyInfo.cs
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\bin\Debug\netcoreapp2.0\AuthenticatorPractice.deps.json
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\bin\Debug\netcoreapp2.0\AuthenticatorPractice.runtimeconfig.json
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\bin\Debug\netcoreapp2.0\AuthenticatorPractice.runtimeconfig.dev.json
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\bin\Debug\netcoreapp2.0\AuthenticatorPractice.dll
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\bin\Debug\netcoreapp2.0\AuthenticatorPractice.pdb
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\obj\Debug\netcoreapp2.0\AuthenticatorPractice.dll
+C:\dev\AuthenticatorPractice\AuthenticatorPractice\obj\Debug\netcoreapp2.0\AuthenticatorPractice.pdb

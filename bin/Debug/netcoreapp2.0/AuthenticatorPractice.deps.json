@@ -1,0 +1,38 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "ff6466f186108c6b8680f4fd17442a42762df94d"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "AuthenticatorPractice/1.0.0": {
+        "dependencies": {
+          "Atom.Module.Base64Url": "1.0.5"
+        },
+        "runtime": {
+          "AuthenticatorPractice.dll": {}
+        }
+      },
+      "Atom.Module.Base64Url/1.0.5": {
+        "runtime": {
+          "lib/net45/Atom.Module.Base64Url.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AuthenticatorPractice/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Atom.Module.Base64Url/1.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5mkI6JQDd8tRJxKPlvtksoSaMkUf3JFWad8thDErx5sXcj6lB3+JR2NDqL/IblQn/GfXQhQNcEx3YiNVePzrqw==",
+      "path": "atom.module.base64url/1.0.5",
+      "hashPath": "atom.module.base64url.1.0.5.nupkg.sha512"
+    }
+  }
+}
