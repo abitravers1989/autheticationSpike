@@ -29,38 +29,47 @@ namespace AuthenticatorPractice
             return (int)unixTime.TotalSeconds;
         }
 
-        public String GetAuthenticationStr()
+        public String GetAuthenticationStr(string encryptedSignature)
         {
             int allowedAccessTime = this.GetUNIXTimestamp() + 300;
-            String stringToSign = accessID + secretKey + allowedAccessTime;
+            //taken out secrete key
+            
+            String stringToSign = "AccessID=member-" + accessID + "&Expires=" + allowedAccessTime + "&Signature=" + encryptedSignature;
             return stringToSign;             
         }
 
-        public string EncodingwithBase(string autheticationString)
+        public HmacSHA1Encription()
+        {
+            int allowedAccessTime = this.GetUNIXTimestamp() + 300;
+            accessID;
+            secretKey;
+
+            
+        }
+
+        public string Base64Encrption(string hexadecimalString)
         {
             // convert string into bytes array
-            byte[] bytes = Encoding.UTF8.GetBytes(autheticationString);
+            byte[] bytes = Encoding.UTF8.GetBytes(hexadecimalString);
             // base64 converts this bytes array into a more complicated string 
             var encoder = Convert.ToBase64String(bytes);
             return encoder;
           
         }
 
-
-
-        public string CreateToken(string message, string secret)
+        public string UrlEncription(string base64String)
         {
-            secret = secret ?? "";
-            var encoding = new System.Text.ASCIIEncoding();
-            byte[] keyByte = encoding.GetBytes(secret);
-            byte[] messageBytes = encoding.GetBytes(message);
-            using (var hmacsha256 = new HMACSHA256(keyByte))
-            {
-                byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
-                return Convert.ToBase64String(hashmessage);
-            }
+
         }
 
+        public string DoEncription()
+        {
+            var hmacEncriptedString = this.HmacSHA1Encription();
+            var base64EncriptedString = this.Base64Encrption(hmacEncriptedString);
+            var urlEncriptedString = this.UrlEncription(base64EncriptedString);
+
+            return urlEncriptedString;
+        }
 
     }
 }
