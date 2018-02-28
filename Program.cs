@@ -7,17 +7,23 @@ namespace AuthenticatorPractice
         static void Main(string[] args)
         {
           
-        AuthenticationHelper aOuth = new AuthenticationHelper("mozscape - 4726a11918", "5dd5adca2d11b02fc2ce94977b1db23c");
-        String auth = aOuth.GetAuthenticationStr();
-            //this has - and empty space in
-        Console.WriteLine(auth);
+        AuthenticationHelper aOuth = new AuthenticationHelper("mozscape - 45676ffgg11918", "5dd5afgwash556as786fc2ce94977b1db23c");
+         var accessTime1 = aOuth.CreateAllowedAccessTime();
+            Console.WriteLine(accessTime1);
+        //var hmacHashString = aOuth.HmacSHA1HashString();
+            //Console.WriteLine(hmacHashString);
 
-         var encodedString = aOuth.EncodingwithBase(auth);
-        // Console.WriteLine(encodedString);
+            Console.ReadKey();
 
-         var hmac = aOuth.CreateToken(auth);
-          Console.WriteLine(hmac);
-          Console.ReadKey();
+
+
+
+
+
+
+
+
+         
         }
     }
 
