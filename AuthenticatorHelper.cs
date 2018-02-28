@@ -23,7 +23,7 @@ namespace AuthenticatorPractice
 
         public int GetUNIXTimestamp()
         {
-            var unixTime = DateTime.Now.ToUniversalTime() -
+            var unixTime = currentDate.ToUniversalTime() -
                 new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
             return (int)unixTime.TotalSeconds;
@@ -31,7 +31,7 @@ namespace AuthenticatorPractice
 
         public int CreateAllowedAccessTime()
         {
-            int allowedAccessTime = this.GetUNIXTimestamp() + 300;
+            int allowedAccessTime = this.GetUNIXTimestamp() + expiresInterval;
             return allowedAccessTime;
         }
 
