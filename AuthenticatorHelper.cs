@@ -41,22 +41,25 @@ namespace AuthenticatorPractice
             var key = secretKey;
 
             //HMACSHA1 is a microsoft class .. set up with secrete key 
-            using (var hmac = new HMACSHA1(Encoding.ASCII.GetBytes(key)))
-            {
-               // then use that class which has a secrete key and is called hmac .. ask it to compute hash value
-                return Encoding.ASCII.GetString(hmac.ComputeHash(Encoding.ASCII.GetBytes(value)));
-            }         
+            Byte[] secretBytes = UTF8Encoding.UTF8.GetBytes(key);
+            var hmac = new HMACSHA1(secretBytes);
+            Byte[] dataBytes = UTF8Encoding.UTF8.GetBytes(value);
+            return Convert.ToBase64String(hmac.ComputeHash(dataBytes));
+            //using (var hmac = new HMACSHA1(UTF8Encoding.UTF8.GetBytes(key)))
+            //{
+            //   // then use that class which has a secrete key and is called hmac .. ask it to compute hash value
+            //    return Encoding.ASCII.GetString(hmac.ComputeHash(Encoding.ASCII.GetBytes(value)));
+            //}         
         }
 
-        public string Base64Encrption(string hexadecimalString)
-        {
-            // convert string into bytes array
-            byte[] bytes = Encoding.UTF8.GetBytes(hexadecimalString);
-            // base64 converts this bytes array into a more complicated string 
-            var encoder = Convert.ToBase64String(bytes);
-            return encoder;
-          
-        }
+        //public string Base64Encrption(string hexadecimalString)
+        //{
+        //    convert string into bytes array
+        //    byte[] bytes = Encoding.UTF8.GetBytes(hexadecimalString);
+        //    base64 converts this bytes array into a more complicated string
+        //   var encoder = Convert.ToBase64String(bytes);
+        //    return encoder;
+        //}
 
         public string UrlEncription(string base64String)
         {
@@ -71,16 +74,21 @@ namespace AuthenticatorPractice
         public string CreateEncriptedSignature(int allowedAccessTime)
         {
             var hmacEncriptedString = this.HmacSHA1HashString(allowedAccessTime);
-            var base64EncriptedString = this.Base64Encrption(hmacEncriptedString);
-            var urlEncriptedString = this.UrlEncription(base64EncriptedString);
+            //var base64EncriptedString = this.Base64Encrption(hmacEncriptedString);
+            var urlEncriptedString = this.UrlEncription(hmacEncriptedString);
 
             return urlEncriptedString;
+        }
+
+        public String TrimAccessID()
+        {
+            return accessID.Replace(" ","");
         }
 
 
         public String GetAuthenticationStr(string encryptedSignature, int allowedAccessTime)
         {
-            String stringToSign = "AccessID=member-" + accessID + "&Expires=" + allowedAccessTime + "&Signature=" + encryptedSignature;
+            String stringToSign = "AccessID=member-" + accessID.Replace(" ", "") + "&Expires=" + allowedAccessTime + "&Signature=" + encryptedSignature;
             return stringToSign;
         }
 

@@ -11,18 +11,20 @@ namespace AuthenticatorPractice
          var accessTime1 = aOuth.CreateAllowedAccessTime();
             Console.WriteLine(accessTime1);
 
-            // var encryptedSignature = aOuth.CreateEncriptedSignature(accessTime1);
-            // var authenticationStr = aOuth.GetAuthenticationStr(encryptedSignature, accessTime1);
+            var encryptedSignature = aOuth.CreateEncriptedSignature(accessTime1);
+            var authenticationStr = aOuth.GetAuthenticationStr(encryptedSignature, accessTime1);
+            Console.WriteLine(authenticationStr);
 
-
-            //var hmacHashString = aOuth.HmacSHA1HashString();
+           // var hmacHashString = aOuth.HmacSHA1HashString(accessTime1);
             //Console.WriteLine(hmacHashString);
 
-            var base64String = aOuth.Base64Encrption("dasbdsdnng%798700887777");
-            Console.WriteLine(base64String);
+            //var base64String = aOuth.Base64Encrption("dasbdsdnng%798700887777");
+            //Console.WriteLine(base64String);
+            
+            //var urlEncryptStr = aOuth.UrlEncription(hmacHashString);
+            //Console.WriteLine(urlEncryptStr);
 
-            var urlEncryptStr = aOuth.UrlEncription(base64String);
-            Console.WriteLine(urlEncryptStr);
+            
 
 
             Console.ReadKey();
