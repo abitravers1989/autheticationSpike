@@ -35,59 +35,41 @@ namespace AuthenticatorPractice
             return allowedAccessTime;
         }
 
-        public string HmacSHA1HashString(int allowedAccessTime)
+        public string HmacSHA1AndBase64Encription(int allowedAccessTime)
         {
             var value = accessID + allowedAccessTime;
             var key = secretKey;
 
-            //HMACSHA1 is a microsoft class .. set up with secrete key 
+            //Setup secrete key as Bytes array
             Byte[] secretBytes = UTF8Encoding.UTF8.GetBytes(key);
+            //Create new HMACSHA1 algorithm with this secretekey
             var hmac = new HMACSHA1(secretBytes);
+            //create bytes array with the value information
             Byte[] dataBytes = UTF8Encoding.UTF8.GetBytes(value);
+            // 1.Call computeHash on the hmac string which contains the seceret key.
+            // This creates the hmac hash with the value information
+            // 2. This is converted to a Base64 String then returned.
             return Convert.ToBase64String(hmac.ComputeHash(dataBytes));
-            //using (var hmac = new HMACSHA1(UTF8Encoding.UTF8.GetBytes(key)))
-            //{
-            //   // then use that class which has a secrete key and is called hmac .. ask it to compute hash value
-            //    return Encoding.ASCII.GetString(hmac.ComputeHash(Encoding.ASCII.GetBytes(value)));
-            //}         
         }
-
-        //public string Base64Encrption(string hexadecimalString)
-        //{
-        //    convert string into bytes array
-        //    byte[] bytes = Encoding.UTF8.GetBytes(hexadecimalString);
-        //    base64 converts this bytes array into a more complicated string
-        //   var encoder = Convert.ToBase64String(bytes);
-        //    return encoder;
-        //}
 
         public string UrlEncription(string base64String)
         {
             //httpUtility is microsoft class to help send things over web... 
             //The .UrlEncode is a built in method in HttpUtility class. 
-            //Class which have methods on.
-           // System.Web.HttpUtility.
-
             return System.Web.HttpUtility.UrlEncode(base64String);
         }
 
         public string CreateEncriptedSignature(int allowedAccessTime)
         {
-            var hmacEncriptedString = this.HmacSHA1HashString(allowedAccessTime);
-            //var base64EncriptedString = this.Base64Encrption(hmacEncriptedString);
-            var urlEncriptedString = this.UrlEncription(hmacEncriptedString);
-
+            var hmacSHA1AndBase64Encription = this.HmacSHA1AndBase64Encription(allowedAccessTime);
+            var urlEncriptedString = this.UrlEncription(hmacSHA1AndBase64Encription);
             return urlEncriptedString;
-        }
-
-        public String TrimAccessID()
-        {
-            return accessID.Replace(" ","");
         }
 
 
         public String GetAuthenticationStr(string encryptedSignature, int allowedAccessTime)
         {
+            // Need to remove whitespace in accessID with .Replace
             String stringToSign = "AccessID=member-" + accessID.Replace(" ", "") + "&Expires=" + allowedAccessTime + "&Signature=" + encryptedSignature;
             return stringToSign;
         }
