@@ -7,7 +7,7 @@ namespace AuthenticatorPractice
         static void Main(string[] args)
         {
           
-        AuthenticationHelper aOuth = new AuthenticationHelper("mozscape - 45676fedfgg11918", "5dd5afgwash556asasa786fc2ce94977b1db23c");
+        AuthenticationHelper aOuth = new AuthenticationHelper("mozscape - 45676fedfgg11918");
          var accessTime1 = aOuth.CreateAllowedAccessTime();
        
             var encryptedSignature = aOuth.CreateEncriptedSignature(accessTime1);
@@ -22,7 +22,6 @@ namespace AuthenticatorPractice
             
             //var urlEncryptStr = aOuth.UrlEncription(hmacHashString);
             //Console.WriteLine(urlEncryptStr);
-
             
             Console.ReadKey();
 

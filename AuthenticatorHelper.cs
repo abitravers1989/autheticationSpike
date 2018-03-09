@@ -14,10 +14,17 @@ namespace AuthenticatorPractice
         private DateTime currentDate = DateTime.Now;
 
 
-        public AuthenticationHelper(String accessID, String secretKey)
+        public AuthenticationHelper(String accessID)
         {
             this.accessID = accessID;
-            this.secretKey = secretKey;
+            this.secretKey = this.GetSecretKey();
+
+        }
+
+        public string GetSecretKey()
+        {
+            var mySecretKey = System.IO.File.ReadAllText(@"C:\dev\AuthenticatorPractice\config.txt");
+            return mySecretKey;
 
         }
 
